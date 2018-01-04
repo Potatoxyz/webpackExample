@@ -8,6 +8,10 @@ module.exports = {
     },
     module: {
         rules: [
+            {
+                test: /\.html$/,
+                use: [ "html-loader" ]
+            },
             { test: /\.css$/, use: [
                 {loader:'style-loader'},
                 {loader:'css-loader'}
@@ -33,9 +37,11 @@ module.exports = {
             $: "jquery",
             jQuery: "jquery"
         }),
+        new webpack.HotModuleReplacementPlugin()//js数据刷新
     ],
     devServer: {
         contentBase: "./output",//本地服务器所加载的页面所在的目录
-        inline: true//实时刷新
+        inline: true,//实时刷新
+        hot:true//js数据刷新
     }
 };
