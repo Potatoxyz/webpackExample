@@ -8,7 +8,10 @@ module.exports = {
     },
     module: {
         rules: [
-            { test: /\.css$/, use: 'css-loader' },
+            { test: /\.css$/, use: [
+                {loader:'style-loader'},
+                {loader:'css-loader'}
+            ] },
             { test: /\.ts$/, use: 'ts-loader'},
             { test: /\.js$/, use: 'babel-loader'},
             {
@@ -30,5 +33,9 @@ module.exports = {
             $: "jquery",
             jQuery: "jquery"
         }),
-    ]
+    ],
+    devServer: {
+        contentBase: "./output",//本地服务器所加载的页面所在的目录
+        inline: true//实时刷新
+    }
 };
