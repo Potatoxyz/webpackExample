@@ -11136,7 +11136,8 @@ function init() {
 /* WEBPACK VAR INJECTION */(function($) {
 Object.defineProperty(exports, "__esModule", { value: true });
 function test() {
-    var mes = 'This is test for typescript';
+    var la = 'typescript';
+    var mes = "  This is test for " + la;
     $('#container').append(mes);
 }
 exports.test = test;
@@ -11183,7 +11184,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "div {\n  border: 1px solid gray;\n  padding: 10px;\n  border-radius: 5px; }\n", ""]);
+exports.push([module.i, "div {\n  border: 1px solid gray;\n  padding: 10px;\n  border-radius: 5px;\n  margin-bottom: 10px; }\n", ""]);
 
 // exports
 

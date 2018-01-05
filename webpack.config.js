@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack=require('webpack');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
     entry: './entry/index.js',
     output: {
@@ -8,16 +9,12 @@ module.exports = {
     },
     module: {
         rules: [
-            {
-                test: /\.html$/,
-                use: [ "html-loader" ]
-            },
             { test: /\.css$/, use: [
                 {loader:'style-loader'},
                 {loader:'css-loader'}
             ] },
             { test: /\.ts$/, use: 'ts-loader'},
-            { test: /\.js$/, use: 'babel-loader'},
+            { test: /\.js$/,exclude: /node_modules/, use: 'babel-loader'},
             {
                 test: /\.scss$/,
                 use: [
@@ -37,11 +34,14 @@ module.exports = {
             $: "jquery",
             jQuery: "jquery"
         }),
-        new webpack.HotModuleReplacementPlugin()//js数据刷新
+        new HtmlWebpackPlugin({
+            title: 'Html',
+            template:'entry/index.html',
+            filename: 'index.html'
+        })
     ],
     devServer: {
         contentBase: "./output",//本地服务器所加载的页面所在的目录
         inline: true,//实时刷新
-        hot:true//js数据刷新
     }
 };

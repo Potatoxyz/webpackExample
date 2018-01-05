@@ -1,4 +1,4 @@
 function init(){
-    $('#container').append('hello webpack');
+    $('#container').append('webpack test success for hot refresh');
 }
 export {init};
