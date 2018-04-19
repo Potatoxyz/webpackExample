@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack=require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 module.exports = {
     entry: './entry/index.js',
     output: {
@@ -38,7 +39,8 @@ module.exports = {
             title: 'Html',
             template:'entry/index.html',
             filename: 'index.html'
-        })
+        }),
+        new ExtractTextPlugin("entry/css/styles.css")
     ],
     devServer: {
         contentBase: "./output",//本地服务器所加载的页面所在的目录
